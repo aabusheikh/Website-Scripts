@@ -11,29 +11,20 @@
 (function() {
     'use strict';
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    document.body.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
 
-    async function CtrlShiftAltD() {
-        await sleep(5000);
-        document.body.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
+        var evt = new KeyboardEvent('keydown', {
+            'keyCode':68, // D
+            'which':68,
+            'ctrlKey':true,
+            'altKey':true,
+            'shiftKey':true,
+            'bubbles':true,
+            'view':window
+        });
+        document.dispatchEvent(evt);;
 
-            var evt = new KeyboardEvent('keydown', {
-                'keyCode':68, // D
-                'which':68,
-                'ctrlKey':true,
-                'altKey':true,
-                'shiftKey':true,
-                'bubbles':true,
-                'view':window
-            });
-            document.dispatchEvent(evt);;
-
-            return false;
-        }, false);
-    }
-
-    CtrlShiftAltD();
+        return false;
+    }, false);
 })();
