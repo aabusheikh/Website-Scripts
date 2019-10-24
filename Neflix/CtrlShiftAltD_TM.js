@@ -11,7 +11,6 @@
 (function() {
     'use strict';
 
-    // Your code here...
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
